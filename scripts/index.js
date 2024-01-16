@@ -1,39 +1,10 @@
+import { commonItemList } from '/scripts/commonItemList.js';
 const addItemInput = document.getElementById('text-input');
 const addItemBtn = document.getElementById('add-item-btn');
 const itemListDisplayed = document.getElementById('list-of-items');
 const autoCompleteSuggestionsList = document.getElementById('auto-complete-suggestion-list');
 
 let currentItemList = [];
-
-const commonItemList = [
-    'Milk',
-    'Bread',
-    'Honey',
-    'Powerade',
-    'Fish - Frozen',
-    'Fish - Fresh',
-    'Steak',
-    'Bacon',
-    'Eggs',
-    'Cake',
-    'Icecream',
-    'Apple  Pie',
-    'Dog Biscuits',
-    'Cat Food',
-    'Tuna',
-    'Ham',
-    'Malt',
-    'Marble Cake',
-    'Ice',
-    'Apples',
-    'Figs',
-    'Sauce',
-    'Trash Bags',
-    'Ham 2',
-    'Hammy',
-    'Ham Sam',
-    'Ham Large'
-];
 
 // Function to captalise first character of a string
 const capitaliseString = (str) => {
@@ -91,6 +62,8 @@ addItemBtn.addEventListener('click', function(){
     }
     // Regardless of if itemToAdd already is included in currentItemList clear user input field
     addItemInput.value = "";
+    // Hides autoCompleteSuggestionsList one addItemBtn is clicked
+    autoCompleteSuggestionsList.style.display = "none";
 });
 
 autoCompleteSuggestionsList.addEventListener('click', function(e) {
