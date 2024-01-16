@@ -1,26 +1,109 @@
-const addItemSelector = document.getElementById('most-common');
-const addItemInput = document.getElementById('text-input'); // maybe change to access value later
+const addItemInput = document.getElementById('text-input');
 const addItemBtn = document.getElementById('add-item-btn');
 const itemListDisplayed = document.getElementById('list-of-items');
+const autoCompleteSuggestionsList = document.getElementById('auto-complete-suggestion-list');
 
 let currentItemList = [];
 
-addItemBtn.addEventListener('click', function(){
-    let itemToAdd = addItemInput.value;
-    currentItemList.push(itemToAdd);
-    addItemInput.value = "";
+const commonItemList = [
+    'Milk',
+    'Bread',
+    'Honey',
+    'Powerade',
+    'Fish - Frozen',
+    'Fish - Fresh',
+    'Steak',
+    'Bacon',
+    'Eggs',
+    'Cake',
+    'Icecream',
+    'Apple  Pie',
+    'Dog Biscuits',
+    'Cat Food',
+    'Tuna',
+    'Ham',
+    'Malt',
+    'Marble Cake',
+    'Ice',
+    'Apples',
+    'Figs',
+    'Sauce',
+    'Trash Bags',
+    'Ham 2',
+    'Hammy',
+    'Ham Sam',
+    'Ham Large'
+];
 
-    // console.log(currentItemList);
-    renderList(currentItemList);
+// Function to captalise first character of a string
+const capitaliseString = (str) => {
+    if (str && typeof str === 'string') {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    return str;
+}
+
+// Function to update autocomplete suggestions
+const updateSuggestions = (userInput) => {
+    autoCompleteSuggestionsList.innerHTML = "";
+    let suggestionHTML = "";
+
+    // filter commonItemList for items that starts with user inputted text
+    const filteredItems = commonItemList.filter(item => item.toLowerCase().startsWith(userInput.toLowerCase()));
+    // Get the first 3 items from filteredItems
+    const filteredItemsTop3 = filteredItems.slice(0, 3);
+
+    if (userInput === "") {
+        autoCompleteSuggestionsList.style.display = "none";
+        return;
+    }
+
+    if (filteredItems.length === 0) {
+        autoCompleteSuggestionsList.style.display = "none";
+        return;
+    }
+
+    filteredItemsTop3.forEach(item => {
+        suggestionHTML += `<li>${item}</li>`;
+        console.log(suggestionHTML);
+    });
+
+    autoCompleteSuggestionsList.innerHTML = suggestionHTML;
+    autoCompleteSuggestionsList.style.display = "block";
+}
+
+
+
+addItemInput.addEventListener('input', function(){
+    updateSuggestions(addItemInput.value);
+})
+
+
+addItemBtn.addEventListener('click', function(){
+    // let itemToAdd = addItemInput.value;
+    let itemToAdd = capitaliseString(addItemInput.value);
+    // If item is already in currentItemList don't allow it to be added again
+    if (!currentItemList.includes(itemToAdd)) {
+        currentItemList.push(itemToAdd);
+        renderList(currentItemList);
+    } else {
+        console.log('Duplicate items can not be added to the list!');
+    }
+    // Regardless of if itemToAdd already is included in currentItemList clear user input field
+    addItemInput.value = "";
 });
 
-addItemSelector.addEventListener('change', function(){
-    let itemToAdd = addItemSelector.value;
-    currentItemList.push(itemToAdd);
-
-    // console.log(currentItemList);
-    renderList(currentItemList);
-})
+autoCompleteSuggestionsList.addEventListener('click', function(e) {
+    // let itemToAdd = addItemInput.value;
+    let itemToAdd = capitaliseString(e.target.textContent);
+    // If item is already in currentItemList don't allow it to be added again
+    if (!currentItemList.includes(itemToAdd)) {
+        currentItemList.push(itemToAdd);
+        renderList(currentItemList);
+    } else {
+        console.log('Duplicate items can not be added to the list!');
+    }
+});
 
 const renderList = (currentItemList) => {
     let listInHTML = "";
@@ -31,7 +114,6 @@ const renderList = (currentItemList) => {
                 <div class="remove-item-btn">X</div>
             </div>`
     }
-
     itemListDisplayed.innerHTML = listInHTML;
 }
 
@@ -47,7 +129,3 @@ itemListDisplayed.addEventListener('click', function(e) {
         renderList(currentItemList);
     }
 })
-
-// const removeItemFromList = (e) => {
-//     (e.target.id)
-// }

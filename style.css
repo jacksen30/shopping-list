@@ -117,3 +117,21 @@ body {
   /* Padding Top and Bottom may create alignment issues later */
   padding: 5px 10px;
 }
+
+/* Auto Complete / suggestions list and itm stylng */
+
+.auto-complete-suggestion-list {
+  list-style: none;
+  background-color: #707074;
+  width: 200px;
+  margin: 0px;
+  padding: 0px;
+  font-size: 16px;
+  text-align: center;
+  display: none;
+}
+
+.auto-complete-list-item {
+  padding: 5px 0px;
+  border-bottom: 1px solid black;
+}
