@@ -70,22 +70,33 @@ The element will be visually hidden but will still be read by screen reader tech
   --section-heading-color: #0000FF;
   --text-content-color: #8892b0;
   --form-input-error-color: #ff7a7a;
-  --socials-color: #b8801e;
+  --socials-color: #DB222A;
 }
 
 body {
-  background-color: var(--main-background-color);
+  background-color: var(--socials-color);
+}
+
+.header {
+  padding: 10px 20px;
+  background-color: #DB222A;
 }
 
 .main {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border-radius: 25px 25px 0px 0px;
+  background-color: var(--main-background-color);
+  padding-top: 20px;
+
+  min-height: 100vh;
 }
 
 .list-of-items-wrapper {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  margin-top: 80px;
 }
 
 .list-of-items {
@@ -99,39 +110,57 @@ body {
   justify-content: space-between;
 
   width: 350px;
-  padding: 8px;
+  padding: 4px 0px 4px 8px;
 
-  font-size: 30px;
+  font-size: 20px;
   border: 1px solid yellow;
-  background-color: aqua;
+  background-color: #1F7A8C;
 
-}
+  border-radius: 15px;
+  margin-bottom: 6px;
 
-.emoji {
-  margin-right: 15px;
-  font-size: 15px;
 }
 
 .remove-item-btn {
-  color: red;
-  /* Padding Top and Bottom may create alignment issues later */
-  padding: 5px 10px;
+  padding: 0px 7px;
 }
 
-/* Auto Complete / suggestions list and itm stylng */
+/* Auto Complete / suggestions list and item styling */
 
 .auto-complete-suggestion-list {
   list-style: none;
-  background-color: #707074;
-  width: 200px;
+  background-color: #BFDBF7;
+  width: 250px;
   margin: 0px;
   padding: 0px;
   font-size: 16px;
   text-align: center;
   display: none;
+  position: absolute;
 }
 
 .auto-complete-list-item {
   padding: 5px 0px;
   border-bottom: 1px solid black;
+}
+
+.text-input {
+  padding: 3px 20px 3px 6px;
+  font-size: 18px;
+  width: 250px;
+}
+
+.combo-box-wrapper {
+  position: relative;
+}
+
+.add-item-btn {
+  background-color: green;
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  border-radius: 1000px;
+  padding: 0px 8px;
+  border: none;
+  font-weight: 800;
 }

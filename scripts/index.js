@@ -83,8 +83,9 @@ const renderList = (currentItemList) => {
     for (let item of currentItemList) {
         listInHTML += `
             <div class="list-item" id="${item}">
-                <div class="list-item__item-text"><p><span class="emoji">🟢</span>${item}</p></div>
-                <div class="remove-item-btn">X</div>
+                <div class="list-item__icon-img-wrapper">🍌</div>
+                <div class="list-item__item-text"><p>${item}</p></div>
+                <div class="remove-item-btn">❌</div>
             </div>`
     }
     itemListDisplayed.innerHTML = listInHTML;

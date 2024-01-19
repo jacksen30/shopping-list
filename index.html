@@ -12,22 +12,26 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <header>
-
+    <header class="header">
+        <h1>Easy Shop</h1>
+        <h2>The fast and simple shopping list app</h2>
     </header>
 
     <main class="main">
-        <h1>Shopping List</h1>
+        <h3>Shopping List</h3>
         <div>
-            <!-- <label for="text-input">Add An Item:</label> -->
-            <input type="text" id="text-input" value="" placeholder="e.g Milk" />
-            <button id="add-item-btn">+</button>
+            <div class="combo-box-wrapper">
+                <!-- <label for="text-input">Add An Item:</label> -->
+                <input type="text" id="text-input" class="text-input" value="" placeholder="add an item here, e.g Milk" />
+                <button id="add-item-btn" class="add-item-btn">+</button>
+            </div>
+            <div>
+                <ul id="auto-complete-suggestion-list" class="auto-complete-suggestion-list">
+                    <!-- JavaScript will render auto complete list item suggestions here -->
+                </ul>
+            </div>
         </div>
-        <div>
-            <ul id="auto-complete-suggestion-list" class="auto-complete-suggestion-list">
-                <!-- JavaScript will render auto complete list item suggestions here -->
-            </ul>
-        </div>
+
         <div class="list-of-items-wrapper">
             <div id="list-of-items" class="list-of-items">
 
